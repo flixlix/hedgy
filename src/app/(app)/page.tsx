@@ -1,3 +1,4 @@
+import ScrollCTA from "@/components/scroll-cta"
 import { Button } from "@/components/ui/button"
 import { Fullscreen } from "lucide-react"
 import Image from "next/image"
@@ -5,34 +6,19 @@ import Link from "next/link"
 
 export default function LandingPage() {
   return (
-    <div className="container flex min-h-screen max-w-screen-xl flex-col px-6 lg:px-20">
-      {/* <header className="sticky inset-x-0 top-2">
-        <div className="flex min-h-10 items-center justify-between rounded-xl border bg-[#F3E3CF]/80 px-4 backdrop-blur-sm">
-          <Link href="/" className="font-bold">
-            Hedgy
-          </Link>
-        </div>
-      </header> */}
-      <main className="flex flex-1 flex-col gap-20 pb-20">
-        <Hero />
-        <WhyAmIHere />
-        <HedgehogsInDanger />
-        <Map />
-      </main>
-      <footer className="border-t py-10">
-        <div className="flex justify-center gap-4">
-          <Button variant="ghost">Impressum</Button>
-          <Button variant="ghost">Datenschutz</Button>
-          <Button variant="ghost">Kontakt</Button>
-        </div>
-      </footer>
-    </div>
+    <main className="flex flex-1 flex-col gap-20 pb-20">
+      <Hero />
+      <WhyAmIHere />
+      <HedgehogsInDanger />
+      <Map />
+      <ScrollCTA />
+    </main>
   )
 }
 
 function Hero() {
   return (
-    <div className="flex flex-col-reverse justify-end gap-10 py-10 md:min-h-screen md:flex-row md:items-center md:justify-between">
+    <div className="relative flex flex-col-reverse justify-end gap-10 py-10 md:top-[-58px] md:min-h-[calc(100vh-116px)] md:flex-row md:items-center md:justify-between">
       <div className="flex flex-col items-start gap-6">
         <section className="prose prose-h1:mb-2 prose-p:mt-2 prose-p:leading-normal">
           <h1>Hedgy - das Igelhaus</h1>
@@ -49,7 +35,7 @@ function Hero() {
       <Image
         src="/assets/hero-hedgehog.png"
         alt="Hedgy the hedgehog"
-        className="mx-auto w-full max-w-80 md:me-10 md:w-auto md:max-w-max"
+        className="mx-auto w-full max-w-80 md:w-auto md:max-w-max"
         width={400}
         height={400}
       />
@@ -63,7 +49,7 @@ function WhyAmIHere() {
       <Image
         src="/assets/illu.png"
         alt="Illustration of a hedgehog shelter"
-        className="w-full px-10 md:w-auto md:px-0"
+        className="w-full object-contain px-10 md:w-auto md:px-0"
         width={400}
         height={400}
       />
@@ -107,7 +93,11 @@ function HedgehogsInDanger() {
 
 function Map() {
   return (
-    <div className="mx-auto flex min-h-screen w-auto flex-col items-start justify-center gap-2">
+    <div className="mx-auto flex min-h-screen w-auto flex-col items-start justify-center gap-4">
+      <section className="prose mb-4">
+        <h2>Wo sind unsere Häuser?</h2>
+        <p>Unser Igelhäuser sind in ganz Deutschland verteilt. Hier findest du eine Karte mit allen Standorten.</p>
+      </section>
       <iframe
         width="670"
         height="350"

@@ -13,10 +13,10 @@ export default function NotFound() {
         <p className="text-[200px] font-black text-primary sm:text-[300px] lg:text-[400px]">404</p>
       </div>
       <section className="flex flex-col gap-2 py-8 text-center">
-        <h2 className="text-3xl font-semibold text-primary">Page not found</h2>
+        <h2 className="text-3xl font-semibold text-primary">Seite nicht gefunden</h2>
         <p className="text-muted-foreground">
-          We looked everywhere, but couldn't
-          <br /> find the page you were looking for.
+          Wir konnten leider nicht die Seite finden,
+          <br /> nach der du gesucht hast.
         </p>
       </section>
       <div className="flex gap-4">
