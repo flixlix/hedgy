@@ -16,13 +16,13 @@ export default function DashboardPage() {
       <div className="mt-4 grid grid-cols-3 items-start gap-4">
         <div className="col-span-2 grid grid-cols-2 gap-4">
           <SecurityCamera />
-          <TemperatureNumber />
-          <HumidityNumber />
+          <Temperature />
+          <Humidity />
         </div>
         <div className="col-span-1 grid grid-cols-1 gap-4">
           <PresenceCard />
-          <Temperature />
-          <Humidity />
+          <TemperatureNumber />
+          <HumidityNumber />
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@ function TemperatureNumber() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>17,8 °C</CardTitle>
+        <CardTitle>17,8&#8201;°C</CardTitle>
         <CardDescription className="inline-flex items-center gap-1">
           Temperatur im Igelhaus
           <Thermometer className="size-4" />
@@ -47,7 +47,7 @@ function HumidityNumber() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>17,8 %</CardTitle>
+        <CardTitle>78,3&#8201;%</CardTitle>
         <CardDescription className="inline-flex items-center gap-1">
           Luftfeuchtigkeit im Igelhaus
           <Percent className="size-4" />

@@ -1,8 +1,9 @@
 import ScrollCTA from "@/components/scroll-cta"
 import { Button } from "@/components/ui/button"
-import { Fullscreen } from "lucide-react"
+import HedgehogsInDanger from "@/features/landing/components/in-danger"
+import Map from "@/features/landing/components/map"
+import WhyAmIHere from "@/features/landing/components/why-here"
 import Image from "next/image"
-import Link from "next/link"
 
 export default function LandingPage() {
   return (
@@ -39,77 +40,6 @@ function Hero() {
         width={400}
         height={400}
       />
-    </div>
-  )
-}
-
-function WhyAmIHere() {
-  return (
-    <div className="flex flex-col gap-16 md:flex-row md:items-center md:justify-between">
-      <Image
-        src="/assets/illu.png"
-        alt="Illustration of a hedgehog shelter"
-        className="w-full object-contain px-10 md:w-auto md:px-0"
-        width={400}
-        height={400}
-      />
-      <section className="prose me-auto max-w-prose">
-        <h2>Warum bin ich hier?</h2>
-        <p>
-          Dieses Igelhaus ist ein Ort, an dem Igel, die aus unterschiedlichen Gründen nicht in der freien Natur
-          überleben können, ein Zuhause finden. Wir bieten artgerechte Haltung und Pflege für Igel, die aus
-          unterschiedlichen Gründen nicht in der freien Natur überleben können.
-        </p>
-      </section>
-    </div>
-  )
-}
-
-function HedgehogsInDanger() {
-  return (
-    <div className="flex flex-col-reverse gap-16 md:flex-row md:items-center md:justify-between">
-      <section className="prose me-auto max-w-prose">
-        <h2>Warum bauen wir für Igel?</h2>
-        <p>
-          Laut{" "}
-          <Link href="https://www.nationalgeographic.de/tiere/2024/04/igel-in-deutschland-das-leise-verschwinden">
-            National Geographic
-          </Link>{" "}
-          sind Igel in Deutschland gefährdet. Die Gründe dafür sind vielfältig. Einer davon ist der Verlust von
-          Lebensraum. Igel finden in der freien Natur immer weniger Unterschlupf und Nahrung. Unser Igelhaus soll ein
-          kleiner Beitrag dazu sein, diesen stacheligen Freunden zu helfen.
-        </p>
-      </section>
-      <Image
-        src="https://static.nationalgeographic.de/files/styles/image_3200/public/igelhilfe-tierschutz.webp?w=1600&h=900"
-        alt="Illustration of a hedgehog shelter"
-        className="w-full px-10 md:w-auto md:px-0"
-        width={400}
-        height={400}
-      />
-    </div>
-  )
-}
-
-function Map() {
-  return (
-    <div className="mx-auto flex min-h-screen w-auto flex-col items-start justify-center gap-4">
-      <section className="prose mb-4">
-        <h2>Wo sind unsere Häuser?</h2>
-        <p>Unser Igelhäuser sind in ganz Deutschland verteilt. Hier findest du eine Karte mit allen Standorten.</p>
-      </section>
-      <iframe
-        width="670"
-        height="350"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=9.651317596435549%2C48.74985082796366%2C9.90846633911133%2C48.861778610526834&amp;layer=mapnik&amp;marker=48.80584594616148%2C9.779891967773438"
-        className="mx-auto max-w-full border-none outline-none focus-visible:outline-none"
-      ></iframe>
-      <Button variant="link" className="ms-auto" asChild>
-        <Link href="https://www.openstreetmap.org/?mlat=48.80585&amp;mlon=9.77989#map=13/48.80585/9.77989">
-          <Fullscreen />
-          Große Karte anzeigen
-        </Link>
-      </Button>
     </div>
   )
 }
