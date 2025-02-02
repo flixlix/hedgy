@@ -47,7 +47,7 @@ export default function MqttTeachableMachine() {
           console.log(
             "%csrc/app/(prediction)/prediction/page.tsx:49 message",
             "color: white; background-color: #007acc;",
-            message
+            message.toString()
           )
           setDoorStatus(message.toString() === "open")
         }

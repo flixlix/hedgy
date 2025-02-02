@@ -1,20 +1,3 @@
-/**
- * @license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-
 import * as tf from "@tensorflow/tfjs"
 import { dispose, type SymbolicTensor } from "@tensorflow/tfjs"
 import sharp from "sharp"
@@ -238,7 +221,6 @@ export class CustomMobileNet {
    * Given an image element, makes a prediction through mobilenet returning the
    * probabilities for ALL classes.
    * @param image the image to classify
-   * @param flipped whether to flip the image on X
    */
   async predict(imageBuffer: Buffer) {
     const croppedImageTensor = await this.preprocessImage(imageBuffer)
@@ -266,7 +248,7 @@ export class CustomMobileNet {
 
   private async preprocessImage(imageBuffer: Buffer) {
     // Use sharp to resize the image and convert to raw pixel data (224x224)
-    const imgBuffer = await sharp(imageBuffer).resize(IMAGE_SIZE, IMAGE_SIZE).raw().toBuffer()
+    const imgBuffer = await sharp(imageBuffer).flip(true).resize(IMAGE_SIZE, IMAGE_SIZE).raw().toBuffer()
 
     // Convert raw image buffer to a 3D tensor and normalize to range [0, 1]
     const imgTensor = tf.tensor3d(new Uint8Array(imgBuffer), [IMAGE_SIZE, IMAGE_SIZE, 3])

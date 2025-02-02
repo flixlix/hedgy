@@ -18,7 +18,7 @@ export default function MainQuote() {
       <span className="ps-8 text-2xl font-bold">
         Die größte Gefährdung ist der <span className="text-destructive">Mensch</span>.
       </span>
-      <ArrowDown className="mx-auto mt-10" />
+      <ArrowDown className="animate-bounce mx-auto mt-10" />
     </motion.div>
   )
 }
