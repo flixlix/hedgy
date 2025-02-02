@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "hedgy",
-  title: "Hedgy",
+  title: "Stachelpunkt",
   description: "Saving Hedgehogs by building shelters and providing step-by-step guides to build a diy hedgehog house.",
   url: "https://hedgy.luca-felix.com",
   author: {

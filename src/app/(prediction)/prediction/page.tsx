@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 const MODEL_URL = "/tm-my-image-model/model.json"
 const METADATA_URL = "/tm-my-image-model/metadata.json"
 
-const DOOR_TOPIC = "door-add2eaa7-0d32-46f4-8afb-eb16edc5fd97/open"
+const DOOR_TOPIC = "door-add2eaa7-0d32-46f4-8afb-eb16edc5fd97/door"
 
 export default function MqttTeachableMachine() {
   const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null)
@@ -28,28 +28,46 @@ export default function MqttTeachableMachine() {
       setLabelContainer(Array(loadedModel.getTotalClasses()).fill(""))
     }
 
-    const client = mqtt.connect("wss://test.mosquitto.org:8081")
-    setClient(client)
+    async function connectClient() {
+      const client = mqtt.connect("wss://test.mosquitto.org:8081")
+      console.log("connecting...")
+      await new Promise((resolve) => client.on("connect", resolve))
+      console.log("done")
+      console.log(client)
+      setClient(client)
 
-    client.subscribe(DOOR_TOPIC, (err) => {
-      if (!err) {
-        console.log("Subscribed to door status topic")
-        return
-      }
-      console.log(
-        "%cerror src/app/(prediction)/prediction/page.tsx line:37 ",
-        "color: red; display: block; width: 100%;",
-        err
-      )
-    })
+      client.subscribe(DOOR_TOPIC, (err) => {
+        if (!err) {
+          console.log(`Subscribed to ${DOOR_TOPIC}`)
+          return
+        }
+        console.log(
+          "%cerror src/app/(prediction)/prediction/page.tsx line:37 ",
+          "color: red; display: block; width: 100%;",
+          err
+        )
+      })
 
-    client.on("message", (topic, message) => {
-      if (topic === DOOR_TOPIC) {
-        setDoorStatus(message.toString() === "open")
-      }
-    })
+      client.on("error", (err) => {
+        console.error("Connection error: ", err)
+        client.end()
+      })
+
+      client.on("message", (topic, message) => {
+        console.log(message.toString())
+        if (topic === DOOR_TOPIC) {
+          console.log(
+            "%csrc/app/(prediction)/prediction/page.tsx:49 message",
+            "color: white; background-color: #007acc;",
+            message
+          )
+          setDoorStatus(message.toString() === "open")
+        }
+      })
+    }
 
     initModel()
+    connectClient()
 
     return () => {
       if (client) client.end()
@@ -74,9 +92,12 @@ export default function MqttTeachableMachine() {
         if (class1Prediction) {
           client?.publish(DOOR_TOPIC, "open") // Publish to open the door if Class 1 is detected
           console.log(`Door opened: ${DOOR_TOPIC}`)
+          setDoorStatus(true)
           return
         }
         client?.publish(DOOR_TOPIC, "close") // Publish to close the door if Class 1 is not detected
+        console.log(`Door closed: ${DOOR_TOPIC}`)
+        setDoorStatus(false)
       }
     }
   }
