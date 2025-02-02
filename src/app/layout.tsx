@@ -56,10 +56,10 @@ export default function RootLayout({
       <body
         className={cn(
           geistSans.variable,
-          "min-h-screen bg-background font-sans text-foreground antialiased selection:bg-primary selection:text-primary-foreground"
+          "flex min-h-screen flex-col bg-background font-sans text-foreground antialiased selection:bg-primary selection:text-primary-foreground"
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange enableColorScheme>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange enableColorScheme>
           <NuqsAdapter>
             {children}
             <Toaster />
