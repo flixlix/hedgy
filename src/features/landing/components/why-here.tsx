@@ -1,7 +1,9 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function WhyAmIHere() {
   return (
@@ -10,7 +12,7 @@ export default function WhyAmIHere() {
       whileInView={{ opacity: 1, filter: "blur(0px)" }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="flex flex-col gap-16 md:flex-row md:items-center md:justify-between"
+      className="mt-52 flex snap-center flex-col gap-16 md:flex-row md:items-center md:justify-between"
     >
       <Image
         src="/assets/illu.png"
@@ -20,12 +22,17 @@ export default function WhyAmIHere() {
         height={400}
       />
       <section className="prose me-auto max-w-prose">
-        <h2>Warum bin ich hier?</h2>
+        <h2>Du möchtest auch helfen?</h2>
         <p>
-          Dieses Igelhaus ist ein Ort, an dem Igel, die aus unterschiedlichen Gründen nicht in der freien Natur
-          überleben können, ein Zuhause finden. Wir bieten artgerechte Haltung und Pflege für Igel, die aus
-          unterschiedlichen Gründen nicht in der freien Natur überleben können.
+          Du möchtest auch ein Igelhaus bauen und den stacheligen Freunden helfen? Dann bist du hier genau richtig! Wir
+          zeigen dir, wie du ein Igelhaus bauen kannst und was du dabei beachten musst. Schau dir unsere Bauanleitung an
+          und werde Teil der Igelhilfe.
         </p>
+        <Button variant="secondary" asChild>
+          <Link href="/studies" className="no-underline">
+            Mehr erfahren
+          </Link>
+        </Button>
       </section>
     </motion.div>
   )

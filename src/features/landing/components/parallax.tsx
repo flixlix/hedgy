@@ -34,6 +34,20 @@ const images: { src: string; alt: string; title: string; description: string }[]
     description:
       "Durch die milderen Winter verlieren Igel ihren natürlichen Rhythmus für den Winterschlaf. Dies kann zu Schwächung und Tod führen, da die Tiere nicht genug Fettreserven aufgebaut haben, um den Winter zu überstehen.",
   },
+  {
+    src: "/assets/backyard.jpg",
+    alt: "clean gardens",
+    title: "Gärten ohne Unterschlupfmöglichkeiten",
+    description:
+      "Viele Gärten sind heute so gestaltet, dass sie für Igel keinen geeigneten Lebensraum bieten. Die Tiere finden keine Unterschlupfmöglichkeiten und Nahrung.",
+  },
+  {
+    src: "/assets/garden-fence.jpg",
+    alt: "garden fence",
+    title: "Zäune und Mauern um Grundstücke",
+    description:
+      "Zäune und Mauern können für Igel unüberwindbare Hindernisse darstellen. Die Tiere finden keinen Zugang zu den Gärten und Grundstücken, in denen sie Nahrung und Unterschlupf finden könnten.",
+  },
 ]
 
 export default function Parallax() {
@@ -66,11 +80,22 @@ export default function Parallax() {
     restDelta: 0.001,
   })
 
+  const { scrollYProgress: headingContainerScrollY } = useScroll({
+    target: target,
+    offset: ["end end", "end center"],
+  })
+  const headingContainerScrollYOffset = useTransform(headingContainerScrollY, [0, 1], [1, 0])
+  const headingContainerOpacity = useSpring(headingContainerScrollYOffset, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
   return (
     <div id="example" className="relative" ref={target}>
-      <div className="prose sticky left-0 top-10 z-10 md:top-40">
+      <motion.div className="prose sticky left-0 top-10 z-10 md:top-40" style={{ opacity: headingContainerOpacity }}>
         <motion.h2 style={{ opacity: titleOpacity }}>Warum wir für Igel bauen</motion.h2>
-      </div>
+      </motion.div>
       {images.map((image, index) => (
         <ParallaxImage key={image.alt} id={index + 1} headingRef={index === 0 ? headingRef : undefined} {...image} />
       ))}
@@ -157,7 +182,7 @@ function StyleSheet() {
   return (
     <style jsx global>{`
       html {
-        scroll-snap-type: y proximity;
+        scroll-snap-type: y mandatory;
       }
 
       .progress {

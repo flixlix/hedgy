@@ -40,7 +40,7 @@
     "@t3-oss/env-nextjs": "^0.11.1",
     "@tabler/icons-react": "^3.23.0",
     "@teachablemachine/image": "^0.8.5",
-    "@tensorflow/tfjs-node": "^4.22.0",
+    "@tensorflow/tfjs": "^4.22.0",
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.4.1",
     "babel-plugin-react-compiler": "19.0.0-beta-a7bf2bd-20241110",

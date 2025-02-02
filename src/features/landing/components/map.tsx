@@ -12,7 +12,7 @@ export default function Map() {
       whileInView={{ opacity: 1, filter: "blur(0px)" }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="mx-auto flex min-h-screen w-auto flex-col items-start justify-center gap-4"
+      className="mx-auto mb-28 mt-52 flex w-auto snap-center flex-col items-start justify-center gap-4"
     >
       <section className="prose mb-4">
         <h2>Wo sind unsere Häuser?</h2>
