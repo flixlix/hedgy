@@ -1,12 +1,13 @@
 import ScrollCTA from "@/components/scroll-cta"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
+import AnimationHedgehog from "@/features/landing/components/animation-hedgehog"
 import HedgehogsInDanger from "@/features/landing/components/in-danger"
 import MainQuote from "@/features/landing/components/main-quote"
 import Map from "@/features/landing/components/map"
 import Parallax from "@/features/landing/components/parallax"
 import WhyAmIHere from "@/features/landing/components/why-here"
-import Image from "next/image"
+import Link from "next/link"
 
 export default function LandingPage() {
   return (
@@ -34,17 +35,15 @@ function Hero() {
           </p>
         </section>
         <div className="flex gap-2">
-          <Button>Eigenes Igelhaus bauen</Button>
-          <Button variant="ghost">Mehr erfahren</Button>
+          <Button asChild>
+            <Link href="/diy">Eigenes Igelhaus bauen</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/studies">Mehr erfahren</Link>
+          </Button>
         </div>
       </div>
-      <Image
-        src="/assets/hero-hedgehog.png"
-        alt="Hedgy the hedgehog"
-        className="mx-auto w-full max-w-80 md:w-auto md:max-w-max"
-        width={400}
-        height={400}
-      />
+      <AnimationHedgehog className="pointer-events-none w-full max-w-80 md:max-w-max" />
     </div>
   )
 }

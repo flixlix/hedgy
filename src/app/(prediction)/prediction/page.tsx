@@ -104,8 +104,8 @@ export default function MqttTeachableMachine() {
   }
 
   return (
-    <div className="container max-w-screen-md py-20">
-      <Card>
+    <div className="container flex h-screen max-w-screen-md flex-col items-center justify-center py-20">
+      <Card className="w-full">
         <CardHeader className="flex-row items-center justify-between gap-4">
           <CardTitle>Teachable Machine MQTT Door Opener</CardTitle>
           <Badge variant={doorStatus ? "outline" : "destructive"} className="ms-auto">
@@ -122,8 +122,12 @@ export default function MqttTeachableMachine() {
             )}
           </Badge>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          {image && <img src={image.src} alt="Uploaded" className="mx-auto aspect-square size-64 object-cover" />}
+        <CardContent className="flex flex-col gap-4 pb-16">
+          {image ? (
+            <img src={image.src} alt="Uploaded" className="mx-auto aspect-square size-64 object-cover" />
+          ) : (
+            <div className="h-10" />
+          )}
           <Input className="mx-auto max-w-sm" type="file" accept="image/*" onChange={handleFileChange} />
           {!!labelContainer?.length && labelContainer.some((label) => !!label) && (
             <div className="flex flex-wrap items-center gap-2" id="label-container">

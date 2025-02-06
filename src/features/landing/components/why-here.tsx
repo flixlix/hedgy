@@ -29,8 +29,8 @@ export default function WhyAmIHere() {
           und werde Teil der Igelhilfe.
         </p>
         <Button variant="secondary" asChild>
-          <Link href="/studies" className="no-underline">
-            Mehr erfahren
+          <Link href="/diy" className="no-underline">
+            Eigenes Igelhaus bauen
           </Link>
         </Button>
       </section>

@@ -5,7 +5,6 @@ import mqtt from "mqtt"
 import { NextResponse } from "next/server"
 
 const DOOR_TOPIC = "door-add2eaa7-0d32-46f4-8afb-eb16edc5fd97/door"
-const IMAGE_TOPIC = "door-add2eaa7-0d32-46f4-8afb-eb16edc5fd97/image"
 
 // Define the model URLs
 const MODEL_URL = `${process.env.API_URL}/tm-my-image-model/model.json`
@@ -13,8 +12,10 @@ const METADATA_URL = `${process.env.API_URL}/tm-my-image-model/metadata.json`
 
 export async function POST(req: Request) {
   // connect to the MQTT broker
+  console.log("connecting mqtt")
   const client = mqtt.connect("wss://test.mosquitto.org:8081")
   await new Promise((resolve) => client.on("connect", resolve))
+  console.log("connected mqtt")
   // Read the raw body from the request (binary data)
   const arrayBuffer = await req.arrayBuffer()
   const buffer = Buffer.from(arrayBuffer)
@@ -24,18 +25,22 @@ export async function POST(req: Request) {
   // image.write(buffer)
 
   // send the image to mqtt broker
-  client.publish(IMAGE_TOPIC, buffer)
 
   if (!buffer.length) {
     return NextResponse.json({ error: "No image data provided" }, { status: 400 })
   }
 
   // Load the Teachable Machine model
+  console.log("loading model")
   const model = await tmImage.load(MODEL_URL, METADATA_URL)
+  console.log("model loaded")
+  console.log("predicting")
   const predictions = await model.predict(buffer) // Use the buffer as the input for prediction
+  console.log("predicted")
 
   // Sort and return the predictions
   const sortedPredictions = predictions.sort((a, b) => b.probability - a.probability)
+  console.log("sorted predictions")
 
   console.log(sortedPredictions)
 

@@ -2,11 +2,9 @@
 
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
@@ -54,35 +52,6 @@ export default function HedgyNavigationMenu() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Starten</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none transition-colors hover:bg-accent/50 focus:shadow-md"
-                    href="/introduction"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">Einführung</div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Erfahren Sie mehr über Hedgy. Lernen Sie mehr über Igel.
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/mission" title="Mission">
-                Unsere Mission und Werte.
-              </ListItem>
-              <ListItem href="/hedgehog-danger" title="Igel in Gefahr">
-                Warum Igel in Gefahr sind und wie wir helfen.
-              </ListItem>
-              <ListItem href="/map" title="Karte">
-                Wo wir uns befinden und wie Sie uns erreichen.
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/diy" legacyBehavior passHref>
             <NavigationMenuLink
