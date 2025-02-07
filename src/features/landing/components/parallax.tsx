@@ -11,14 +11,13 @@ const images: { src: string; alt: string; title: string; description: string }[]
     alt: "headlights at night",
     title: "Straßenverkehr",
     description:
-      "Igel sind in Deutschland gefährdet. Einer der Gründe dafür ist der Straßenverkehr. Jedes Jahr werden viele Igel von Autos überfahren. Wir bauen Igelhäuser, um diesen stacheligen Freunden zu helfen.",
+      "Igel sind in Deutschland gefährdet. Einer der Gründe dafür ist der Straßenverkehr. Jedes Jahr werden viele Igel von Autos überfahren.",
   },
   {
     src: "/assets/forest-motion.jpg",
     alt: "life room",
     title: "Verlust von Lebensraum",
-    description:
-      "Igel finden in der freien Natur immer weniger Unterschlupf und Nahrung. Unser Igelhaus soll ein kleiner Beitrag dazu sein, diesen stacheligen Freunden zu helfen.",
+    description: "Igel finden in der freien Natur immer weniger Unterschlupf und Nahrung.",
   },
   {
     src: "/assets/mowing-robot.jpg",

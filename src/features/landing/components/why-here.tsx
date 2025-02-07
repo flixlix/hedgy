@@ -24,9 +24,9 @@ export default function WhyAmIHere() {
       <section className="prose me-auto max-w-prose">
         <h2>Du möchtest auch helfen?</h2>
         <p>
-          Du möchtest auch ein Igelhaus bauen und den stacheligen Freunden helfen? Dann bist du hier genau richtig! Wir
-          zeigen dir, wie du ein Igelhaus bauen kannst und was du dabei beachten musst. Schau dir unsere Bauanleitung an
-          und werde Teil der Igelhilfe.
+          Du möchtest auch ein Igelhaus bauen und den Igeln helfen? Dann bist du hier genau richtig! Wir zeigen dir, wie
+          du ein Igelhaus bauen kannst und was du dabei beachten musst. Schau dir unsere Bauanleitung an und werde Teil
+          der Igelhilfe.
         </p>
         <Button variant="secondary" asChild>
           <Link href="/diy" className="no-underline">
