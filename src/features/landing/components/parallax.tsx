@@ -181,7 +181,7 @@ function StyleSheet() {
   return (
     <style jsx global>{`
       html {
-        scroll-snap-type: y proximity;
+        scroll-snap-type: y mandatory;
       }
 
       .progress {
