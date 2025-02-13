@@ -11,14 +11,14 @@ export default function MainQuote() {
   return (
     <motion.div
       ref={ref}
-      className="mx-auto -mt-20 flex min-h-screen snap-center flex-col justify-center gap-2"
+      className="mx-auto flex min-h-screen snap-center flex-col justify-center gap-2"
       style={{ opacity }}
     >
       Wichtig zu wissen:
       <span className="ps-8 text-2xl font-bold">
         Die größte Gefährdung ist der <span className="text-destructive">Mensch</span>.
       </span>
-      <ArrowDown className="animate-bounce mx-auto mt-10" />
+      <ArrowDown className="mx-auto mt-10 animate-bounce" />
     </motion.div>
   )
 }
