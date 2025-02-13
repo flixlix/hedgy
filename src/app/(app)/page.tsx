@@ -6,6 +6,7 @@ import HedgehogsInDanger from "@/features/landing/components/in-danger"
 import MainQuote from "@/features/landing/components/main-quote"
 import Map from "@/features/landing/components/map"
 import Parallax from "@/features/landing/components/parallax"
+import ScrollSnapper from "@/features/landing/components/scroll-snapper"
 import WhyAmIHere from "@/features/landing/components/why-here"
 import Link from "next/link"
 
@@ -13,6 +14,7 @@ export default function LandingPage() {
   return (
     <main className="flex flex-1 flex-col pb-20">
       <Hero />
+      <ScrollSnapper />
       <MainQuote />
       <Parallax />
       <HedgehogsInDanger />
